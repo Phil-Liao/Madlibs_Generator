@@ -9,23 +9,27 @@ for i in readlines:
     for j in range(len(i)):
         if i[j] == '_':
             lst.append(j)
-    print(lst)
+    #print(lst)
 
-    print(len(lst)/6)
+    #print(len(lst)/6)
     line = i
     for j in range(1, int((len(lst)/6)+1)):
         start = lst[(3*((j*2)-1))-1]+2
         end = lst[(3*((j*2)-1))]-2
         #print(i[start])
         #print(i[end])
-        print(i[start:end+1])
+        #print(i[start:end+1])
         if i[end].isnumeric():
             answer = input("Enter a " + i[start:end] + ':')
+            answer = answer.upper()
         else:
             answer = input("Enter a " + i[start:end+1] + ':')
-        print("___("+i[start:end+1]+")___")
-        print(answer)
+            answer = answer.upper()
+        #print("___("+i[start:end+1]+")___")
+        #print(answer)
         line = line.replace(f"___({i[start:end+1]})___", answer, 1)
-        print(line)
+        #print(line)
     new_paragraph.append(line)
-print(new_paragraph)
+print("\nHere is what you've generated:")
+for i in new_paragraph:
+    print(i)
