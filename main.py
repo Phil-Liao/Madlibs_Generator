@@ -1,35 +1,28 @@
+# Open the file "story.txt" in read mode
 with open("story.txt", 'r') as file:
-    readlines = file.readlines()
+    lines = file.readlines()
 
+# Initialize an empty list to store new paragraphs
 new_paragraph = []
 
-for i in readlines:
-    #print(i, end='')
-    lst = []
-    for j in range(len(i)):
-        if i[j] == '_':
-            lst.append(j)
-    #print(lst)
+# Iterate over each line in the file
+for line in lines:
+    # Initialize an empty list to store the indices of underscores
+    underscore_indices = []
 
-    #print(len(lst)/6)
-    line = i
-    for j in range(1, int((len(lst)/6)+1)):
-        start = lst[(3*((j*2)-1))-1]+2
-        end = lst[(3*((j*2)-1))]-2
-        #print(i[start])
-        #print(i[end])
-        #print(i[start:end+1])
-        if i[end].isnumeric():
-            answer = input("Enter a " + i[start:end] + ':')
-            answer = answer.upper()
-        else:
-            answer = input("Enter a " + i[start:end+1] + ':')
-            answer = answer.upper()
-        #print("___("+i[start:end+1]+")___")
-        #print(answer)
-        line = line.replace(f"___({i[start:end+1]})___", answer.upper(), 1)
-        #print(line)
-    new_paragraph.append(line)
-print("\nHere is what you've generated:")
-for i in new_paragraph:
-    print(i)
+    # Iterate over each character in the line
+    for index in range(len(line)):
+        # If the character is an underscore, add its index to the list
+        if line[index] == '_':
+            underscore_indices.append(index)
+
+    # Calculate the number of groups of underscores
+    num_groups = int(len(underscore_indices) / 6)
+
+    # For each group of underscores
+    for group in range(1, num_groups + 1):
+        # Calculate the start and end indices of the group
+        start = underscore_indices[(3 * (group * 2) - 1) - 1] + 2
+        end = underscore_indices[(3 * (group * 2) - 1)] - 2
+        # The code doesn't currently do anything with these start and end indices
+        # You might want to add code here to use them
