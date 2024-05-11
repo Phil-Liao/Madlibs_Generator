@@ -27,7 +27,7 @@ for i in readlines:
             answer = answer.upper()
         #print("___("+i[start:end+1]+")___")
         #print(answer)
-        line = line.replace(f"___({i[start:end+1]})___", answer, 1)
+        line = line.replace(f"___({i[start:end+1]})___", answer.upper(), 1)
         #print(line)
     new_paragraph.append(line)
 print("\nHere is what you've generated:")
